@@ -1,0 +1,492 @@
+/* ============================================================
+   AgendaPro – Public Styles (Design System)
+   ============================================================ */
+:root {
+  --ap-primary:       #7C3AED;
+  --ap-primary-hover: #6D28D9;
+  --ap-primary-bg:    #F5F3FF;
+  --ap-success:       #10B981;
+  --ap-danger:        #EF4444;
+  --ap-warning:       #F59E0B;
+  --ap-bg:            #F8FAFC;
+  --ap-card:          #FFFFFF;
+  --ap-border:        #E2E8F0;
+  --ap-text:          #0F172A;
+  --ap-text-secondary:#64748B;
+  --ap-radius:        var(--ap-radius, 12px);
+  --ap-radius-sm:     8px;
+  --ap-radius-lg:     14px;
+  --ap-radius-full:   9999px;
+
+  --ap-font:          'Inter', system-ui, -apple-system, sans-serif;
+  --ap-shadow-sm:     0 1px 2px rgba(0,0,0,.04);
+  --ap-shadow:        0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.04);
+  --ap-shadow-md:     0 4px 6px rgba(0,0,0,.05), 0 2px 4px rgba(0,0,0,.04);
+  --ap-shadow-lg:     0 10px 15px rgba(0,0,0,.06);
+  --ap-transition:    180ms ease;
+}
+
+/* ── Wrapper ────────────────────────────────────────────────── */
+.ap-pub-wrap {
+  font-family: var(--ap-font);
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--ap-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.ap-pub-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 32px 24px 24px;
+  background: linear-gradient(135deg, var(--ap-primary) 0%, var(--ap-primary-hover) 100%);
+  border-radius: var(--ap-radius-lg);
+  color: #fff;
+}
+.ap-pub-logo {
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: var(--ap-radius-sm);
+  background: rgba(255,255,255,.15);
+  padding: 6px;
+}
+.ap-pub-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin-bottom: 4px;
+}
+.ap-pub-subtitle {
+  font-size: .9rem;
+  opacity: .85;
+}
+
+/* ── Steps Indicator ────────────────────────────────────────── */
+.ap-steps {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  position: relative;
+  padding: 0 8px;
+}
+.ap-steps::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 12.5%;
+  width: 75%;
+  height: 2px;
+  background: var(--ap-border);
+  z-index: 0;
+}
+.ap-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.ap-step__circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ap-border);
+  color: var(--ap-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .85rem;
+  margin: 0 auto 6px;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px var(--ap-border);
+  transition: all var(--ap-transition);
+}
+.ap-step.active .ap-step__circle {
+  background: var(--ap-primary);
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(124,58,237,.25);
+}
+.ap-step.done .ap-step__circle {
+  background: var(--ap-success);
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+}
+.ap-step__label {
+  font-size: .72rem;
+  color: var(--ap-text-secondary);
+  font-weight: 500;
+}
+.ap-step.active .ap-step__label { color: var(--ap-primary); font-weight: 700; }
+.ap-step.done  .ap-step__label  { color: var(--ap-success); }
+
+/* ── Step Headings ──────────────────────────────────────────── */
+.ap-step-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--ap-text);
+}
+
+/* ── Service / Professional Cards ───────────────────────────── */
+.ap-pub-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--ap-card);
+  border: 2px solid var(--ap-border);
+  border-radius: var(--ap-radius-lg);
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all var(--ap-transition);
+  text-align: left;
+  width: 100%;
+}
+.ap-pub-card:hover {
+  border-color: var(--ap-primary);
+  box-shadow: var(--ap-shadow-md);
+  transform: translateY(-1px);
+}
+.ap-pub-card.selected {
+  border-color: var(--ap-primary);
+  background: var(--ap-primary-bg);
+  box-shadow: 0 0 0 3px rgba(124,58,237,.15);
+}
+.ap-pub-card__dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ap-pub-card__icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--ap-primary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  color: var(--ap-primary);
+}
+.ap-pub-card__body { flex: 1; min-width: 0; }
+.ap-pub-card__name {
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--ap-text);
+}
+.ap-pub-card__sub  {
+  font-size: .82rem;
+  color: var(--ap-text-secondary);
+  margin-top: 2px;
+}
+.ap-pub-card__badge {
+  background: var(--ap-primary-bg);
+  color: var(--ap-primary);
+  font-size: .75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--ap-radius-full);
+  flex-shrink: 0;
+}
+
+/* ── Booking Calendar ───────────────────────────────────────── */
+#agendapro-booking-form .ap-booking-calendar {
+  background: #fff;
+  border: 1px solid var(--ap-border);
+  border-radius: var(--ap-radius-lg);
+  padding: 18px 18px 20px;
+  box-shadow: var(--ap-shadow-lg);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#agendapro-booking-form .ap-calendar-head {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+#agendapro-booking-form .ap-calendar-title {
+  color: var(--ap-text);
+  font-size: .94rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+}
+#agendapro-booking-form .ap-calendar-nav {
+  appearance: none; -webkit-appearance: none;
+  width: 32px; height: 32px;
+  min-width: 32px; min-height: 32px;
+  padding: 0; margin: 0;
+  border: 0; border-radius: 50%;
+  background: transparent;
+  color: var(--ap-text);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  font: inherit; font-size: 1.25rem; font-weight: 800;
+  line-height: 1; cursor: pointer;
+  box-shadow: none; text-decoration: none;
+  transition: background var(--ap-transition), color var(--ap-transition);
+}
+#agendapro-booking-form .ap-calendar-nav:hover:not(:disabled),
+#agendapro-booking-form .ap-calendar-nav:focus-visible:not(:disabled) {
+  background: var(--ap-bg); color: var(--ap-primary); outline: none;
+}
+#agendapro-booking-form .ap-calendar-nav:disabled {
+  background: transparent; color: var(--ap-border); cursor: not-allowed; opacity: 1;
+}
+#agendapro-booking-form .ap-calendar-weekdays,
+#agendapro-booking-form .ap-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+#agendapro-booking-form .ap-calendar-weekdays { margin-bottom: 8px; }
+#agendapro-booking-form .ap-calendar-weekdays span {
+  color: var(--ap-text-secondary);
+  font-size: .66rem; font-weight: 800;
+  text-align: center; line-height: 1;
+}
+#agendapro-booking-form .ap-calendar-grid { row-gap: 12px; }
+#agendapro-booking-form .ap-calendar-day {
+  appearance: none; -webkit-appearance: none;
+  position: relative;
+  width: 100%; aspect-ratio: 1 / .88; min-height: 48px;
+  padding: 0; margin: 0;
+  border: 1px solid transparent; border-radius: var(--ap-radius);
+  background: transparent; color: var(--ap-text);
+  display: flex; align-items: center; justify-content: center;
+  font: inherit; font-size: .9rem; font-weight: 800;
+  cursor: pointer; box-shadow: none; text-decoration: none;
+  box-sizing: border-box;
+  transition: background var(--ap-transition), border-color var(--ap-transition), color var(--ap-transition);
+}
+#agendapro-booking-form .ap-calendar-day:hover:not(:disabled),
+#agendapro-booking-form .ap-calendar-day:focus-visible:not(:disabled) {
+  background: var(--ap-bg); border-color: var(--ap-primary); color: var(--ap-text); outline: none;
+}
+#agendapro-booking-form .ap-calendar-day.selected {
+  background: var(--ap-primary-bg); border-color: var(--ap-primary); color: var(--ap-primary);
+}
+#agendapro-booking-form .ap-calendar-day.muted,
+#agendapro-booking-form .ap-calendar-day:disabled {
+  background: transparent; color: var(--ap-border); opacity: 1;
+}
+#agendapro-booking-form .ap-calendar-day:disabled { cursor: not-allowed; }
+#agendapro-booking-form .ap-calendar-day.has-availability::after {
+  content: '';
+  position: absolute; bottom: 7px; left: 50%;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--ap-success);
+  transform: translateX(-50%);
+}
+
+/* ── Time Slots ─────────────────────────────────────────────── */
+.ap-slots-label {
+  font-size: .85rem; font-weight: 600;
+  color: var(--ap-text-secondary);
+  margin: 16px 0 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.ap-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: 8px;
+}
+.ap-slot {
+  padding: 10px 6px;
+  border: 2px solid var(--ap-border);
+  border-radius: var(--ap-radius-sm);
+  text-align: center;
+  font-size: .85rem; font-weight: 700;
+  cursor: pointer;
+  transition: all var(--ap-transition);
+  background: #fff; color: var(--ap-text);
+  user-select: none;
+}
+.ap-slot:hover    { border-color: var(--ap-primary); color: var(--ap-primary); transform: scale(1.03); }
+.ap-slot.selected { background: var(--ap-primary); color: #fff; border-color: var(--ap-primary); box-shadow: 0 4px 12px rgba(124,58,237,.35); }
+.ap-slot.busy     { opacity: .35; cursor: not-allowed; text-decoration: line-through; pointer-events: none; }
+
+.ap-slots-empty {
+  text-align: center; color: var(--ap-text-secondary);
+  font-size: .9rem; padding: 20px;
+  background: var(--ap-bg); border-radius: var(--ap-radius-sm);
+  border: 1px dashed var(--ap-border);
+}
+
+/* ── Form Inputs ────────────────────────────────────────────── */
+.ap-pub-form-group { margin-bottom: 16px; }
+.ap-pub-label {
+  display: block; font-size: .85rem; font-weight: 600;
+  margin-bottom: 6px; color: var(--ap-text);
+}
+.ap-pub-input {
+  width: 100%;
+  border: 2px solid var(--ap-border);
+  border-radius: var(--ap-radius-sm);
+  padding: 10px 14px;
+  font-size: .95rem; font-family: inherit;
+  color: var(--ap-text); background: #fff;
+  box-sizing: border-box; outline: none;
+  transition: border var(--ap-transition), box-shadow var(--ap-transition);
+  -webkit-appearance: none;
+}
+.ap-pub-input:focus {
+  border-color: var(--ap-primary);
+  box-shadow: 0 0 0 3px rgba(124,58,237,.12);
+}
+textarea.ap-pub-input { resize: vertical; min-height: 80px; }
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.ap-pub-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 13px 24px;
+  border-radius: var(--ap-radius);
+  font-size: .95rem; font-weight: 700; font-family: inherit;
+  cursor: pointer; border: 2px solid transparent;
+  transition: all var(--ap-transition); text-decoration: none;
+}
+.ap-pub-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.ap-pub-btn-primary {
+  background: var(--ap-primary); color: #fff; border-color: var(--ap-primary);
+  width: 100%;
+}
+.ap-pub-btn-primary:hover:not(:disabled) {
+  background: var(--ap-primary-hover); border-color: var(--ap-primary-hover);
+  box-shadow: var(--ap-shadow-md); transform: translateY(-1px);
+}
+.ap-pub-btn-secondary {
+  background: transparent; color: var(--ap-text); border-color: var(--ap-border);
+}
+.ap-pub-btn-secondary:hover { border-color: var(--ap-primary); color: var(--ap-primary); }
+
+.ap-pub-actions { display: flex; gap: 10px; margin-top: 24px; }
+.ap-pub-actions .ap-pub-btn-secondary { flex: 0 0 auto; width: auto; }
+.ap-pub-actions .ap-pub-btn-primary   { flex: 1; }
+
+/* ── Booking Summary ────────────────────────────────────────── */
+.ap-pub-summary {
+  background: #F0FDF4; border: 1.5px solid #A7F3D0;
+  border-radius: var(--ap-radius); padding: 16px;
+  margin-bottom: 20px; font-size: .9rem;
+}
+.ap-pub-summary h4 {
+  font-size: .85rem; font-weight: 700; color: #065F46;
+  margin: 0 0 10px; text-transform: uppercase; letter-spacing: .06em;
+}
+.ap-pub-summary-row {
+  display: flex; gap: 8px; margin-bottom: 4px; align-items: flex-start;
+}
+.ap-pub-summary-row span:first-child { color: var(--ap-text-secondary); min-width: 100px; font-size: .82rem; }
+.ap-pub-summary-row span:last-child  { font-weight: 600; }
+
+/* ── Alerts ─────────────────────────────────────────────────── */
+.ap-pub-alert {
+  padding: 12px 16px; border-radius: var(--ap-radius-sm);
+  font-size: .875rem; font-weight: 500; margin-bottom: 16px;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.ap-pub-alert-error   { background: #FEF2F2; color: #991B1B; border: 1.5px solid #FECACA; }
+.ap-pub-alert-success { background: #ECFDF5; color: #065F46; border: 1.5px solid #A7F3D0; }
+.ap-pub-alert-info    { background: #EFF6FF; color: #1E40AF; border: 1.5px solid #BFDBFE; }
+
+/* ── Success Screen ─────────────────────────────────────────── */
+.ap-pub-success {
+  text-align: center; padding: 40px 20px;
+  animation: apPubFadeUp .4s both;
+}
+.ap-pub-success__icon {
+  font-size: 5rem; margin-bottom: 12px; display: block;
+  animation: apPubBounce .6s .2s both;
+}
+.ap-pub-success h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+.ap-pub-success p  { color: var(--ap-text-secondary); margin-bottom: 20px; }
+.ap-pub-success-card {
+  background: var(--ap-card); border: 1.5px solid var(--ap-border);
+  border-radius: var(--ap-radius); padding: 18px;
+  text-align: left; margin-bottom: 20px; font-size: .9rem;
+}
+
+/* ── My Appointments ────────────────────────────────────────── */
+.ap-pub-appt {
+  background: var(--ap-card); border: 1.5px solid var(--ap-border);
+  border-radius: var(--ap-radius); padding: 16px 18px;
+  margin-bottom: 12px; transition: box-shadow var(--ap-transition);
+}
+.ap-pub-appt:hover { box-shadow: var(--ap-shadow-md); }
+.ap-pub-appt__header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 10px; flex-wrap: wrap; gap: 8px;
+}
+.ap-pub-appt__title { font-weight: 700; font-size: 1rem; }
+.ap-pub-appt__sub   { color: var(--ap-text-secondary); font-size: .85rem; margin-top: 2px; }
+.ap-pub-appt__meta  {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;
+  font-size: .85rem; color: var(--ap-text-secondary);
+}
+.ap-pub-appt__meta span { display: flex; align-items: center; gap: 4px; }
+
+.ap-pub-badge {
+  display: inline-flex; align-items: center; padding: 4px 12px;
+  border-radius: var(--ap-radius-full); font-size: .75rem; font-weight: 700;
+}
+.ap-pub-badge-pending   { background: #FFFBEB; color: #92400E; }
+.ap-pub-badge-confirmed { background: #ECFDF5; color: #065F46; }
+.ap-pub-badge-cancelled { background: #FEF2F2; color: #991B1B; }
+.ap-pub-badge-completed { background: #EFF6FF; color: #1E40AF; }
+.ap-pub-badge-no_show   { background: #F8FAFC; color: #475569; }
+
+.ap-pub-no-results {
+  text-align: center; padding: 40px 20px; color: var(--ap-text-secondary);
+}
+.ap-pub-no-results__icon { font-size: 3rem; display: block; margin-bottom: 10px; }
+
+/* ── Client Info ────────────────────────────────────────────── */
+.ap-pub-client-info {
+  background: linear-gradient(135deg, var(--ap-primary) 0%, var(--ap-primary-hover) 100%);
+  color: #fff; border-radius: var(--ap-radius);
+  padding: 16px 20px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.ap-pub-client-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%; background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.ap-pub-client-name  { font-weight: 700; font-size: 1rem; }
+.ap-pub-client-phone { font-size: .85rem; opacity: .85; }
+
+/* ── Spinner ────────────────────────────────────────────────── */
+.ap-pub-spinner {
+  display: flex; justify-content: center; align-items: center; padding: 48px;
+}
+.ap-pub-spinner::after {
+  content: '';
+  width: 32px; height: 32px;
+  border: 3px solid var(--ap-border);
+  border-top-color: var(--ap-primary);
+  border-radius: 50%;
+  animation: apPubSpin .7s linear infinite;
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes apPubSpin    { to { transform: rotate(360deg); } }
+@keyframes apPubFadeUp  { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: none; } }
+@keyframes apPubBounce  { 0%,60%,100% { transform: none; } 30% { transform: scale(1.15); } }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .ap-pub-actions { flex-direction: column-reverse; }
+  .ap-pub-actions .ap-pub-btn-secondary { width: 100%; }
+  .ap-slots { grid-template-columns: repeat(3, 1fr); }
+  .ap-pub-title { font-size: 1.3rem; }
+  #agendapro-booking-form .ap-booking-calendar { padding: 14px 10px 16px; }
+  #agendapro-booking-form .ap-calendar-grid { row-gap: 8px; }
+  #agendapro-booking-form .ap-calendar-day { min-height: 42px; font-size: .84rem; }
+}
